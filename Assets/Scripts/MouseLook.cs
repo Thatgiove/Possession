@@ -54,7 +54,7 @@ public class MouseLook : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(point);
             RaycastHit hit;
             
-            if (Physics.Raycast(ray, out hit, 5))
+            if (Physics.Raycast(ray, out hit, 10))
             {
                 var creature = hit.transform.gameObject;
                 var head = FindObjectOfType<Head>();
@@ -72,7 +72,6 @@ public class MouseLook : MonoBehaviour
 
                     //var cc = creature.AddComponent<CharacterController>();
  
-
                     creature.AddComponent<Movement>();
                     creature.AddComponent<MouseLook>();
 

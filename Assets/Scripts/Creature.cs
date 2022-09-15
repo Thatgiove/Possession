@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Creature : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool isGravityEnabled;
+    public bool canPossess;
+
     void Start()
     {
         

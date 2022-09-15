@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
     [SerializeField] float movementSpeed = 6;
     [SerializeField] float jumpHeight = 2;
     [SerializeField] float gravity = 20;
-    float airControl = 5;
 
     Vector3 movementDirection;
-
+    float airControl = 5;
     CharacterController characterController;
+    Creature c;
+
 
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
         characterController.stepOffset = 0;
         characterController.radius = transform.localScale.x * 1.5f;
+
+        c = GetComponent<Creature>();
+
     }
 
     void FixedUpdate()
@@ -31,11 +34,10 @@ public class Movement : MonoBehaviour
         input *= movementSpeed;
 
         input = transform.TransformDirection(input);
+        movementDirection = input;
 
         if (characterController.isGrounded)
         {
-            movementDirection = input;
-
             if (Input.GetButton("Jump"))
             {
 
@@ -44,16 +46,22 @@ public class Movement : MonoBehaviour
             {
 
             }
-
-            
         }
         else
         {
-            input.y = movementDirection.y;
-            movementDirection = Vector3.Lerp(movementDirection, input, airControl * Time.deltaTime);
+
+            if (c && c.isGravityEnabled)
+            {
+                input.y = movementDirection.y;
+                movementDirection = Vector3.Lerp(movementDirection, input, airControl * Time.deltaTime);
+            }
         }
 
-        movementDirection.y -= gravity * Time.deltaTime;
+        if (c && c.isGravityEnabled)
+        {
+            movementDirection.y -= gravity * Time.deltaTime;
+        }
+
         characterController.Move(movementDirection * Time.deltaTime);
     }
 }
