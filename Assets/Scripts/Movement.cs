@@ -17,8 +17,6 @@ public class Movement : MonoBehaviour
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        characterController.stepOffset = 0;
-        characterController.radius = transform.localScale.x * 1.5f;
 
         c = GetComponent<Creature>();
 
