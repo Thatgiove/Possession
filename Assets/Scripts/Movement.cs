@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 6;
     [SerializeField] float jumpHeight = 2;
-    [SerializeField] float gravity = 20;
+    [SerializeField] float gravity = 90;
 
     Vector3 movementDirection;
     float airControl = 5;

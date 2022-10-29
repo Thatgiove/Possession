@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Creature : MonoBehaviour
+public class Creature : MonoBehaviour, IControllable
 {
     public bool isGravityEnabled;
     public bool canPossess;
+    //[SerializeField] float velocity;
+    //[SerializeField] float turnSpeed;
 
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

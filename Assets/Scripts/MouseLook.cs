@@ -72,18 +72,26 @@ public class MouseLook : MonoBehaviour
                 var creature = hit.transform.gameObject;
                 var head = FindObjectOfType<Head>();
 
-                if (creature.GetComponent<Creature>() && head)
+                if (head && creature.GetComponent<Creature>() || creature.GetComponent<Human>())
                 {
+                    var eye = creature.transform.Find("eye");
 
                     head.transform.parent = creature.transform;
-                    head.transform.localPosition = Vector3.zero;
+                    if (eye)
+                    {
+                        head.transform.localPosition = eye.transform.localPosition;
+                    }
+                    else
+                    {
+                        head.transform.localPosition = Vector3.zero;
+                    }
+
+                    
                     head.transform.localRotation = Quaternion.identity;
 
-                    //Destroy(GetComponent<CharacterController>());
                     Destroy(GetComponent<Movement>());
                     Destroy(GetComponent<MouseLook>());
 
-                    //var cc = creature.AddComponent<CharacterController>();
  
                     creature.AddComponent<Movement>();
                     creature.AddComponent<MouseLook>();
