@@ -44,6 +44,19 @@ public class MouseLook : MonoBehaviour
         transform.localRotation = bodyRot * bodyStartOrientation;
         head.localRotation = headRot * headStartOrientation;
 
+        //Apri la porte
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            var point = new Vector3(cam.pixelWidth / 2,cam.pixelHeight / 2, 0);
+            Ray ray = cam.ScreenPointToRay(point);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 30) && hit.transform.gameObject.GetComponent<Door>())
+            {
+                hit.transform.gameObject.GetComponent<Door>().OpenDoor();
+            }
+        }
+
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -54,7 +67,7 @@ public class MouseLook : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(point);
             RaycastHit hit;
             
-            if (Physics.Raycast(ray, out hit, 10))
+            if (Physics.Raycast(ray, out hit, 30))
             {
                 var creature = hit.transform.gameObject;
                 var head = FindObjectOfType<Head>();
@@ -77,6 +90,8 @@ public class MouseLook : MonoBehaviour
 
                     print("POSSESS: " + hit.transform.gameObject.name);
                 }
+
+
             }
         }
     }
