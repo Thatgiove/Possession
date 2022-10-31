@@ -13,7 +13,7 @@ public class MouseLook : MonoBehaviour
     Quaternion bodyStartOrientation;
     Quaternion headStartOrientation;
 
-    Transform head;
+    public Transform head;
     Camera cam;
 
     void Start()

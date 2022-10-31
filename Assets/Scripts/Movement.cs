@@ -12,27 +12,22 @@ public class Movement : MonoBehaviour
     float airControl = 5;
     CharacterController characterController;
     Creature c;
-
+    MouseLook ml;
 
     void Awake()
     {
         characterController = GetComponent<CharacterController>();
 
         c = GetComponent<Creature>();
-
     }
 
     void FixedUpdate()
     {
-        var input = new Vector3(
-                Input.GetAxis("Horizontal"),
-                0,
-                Input.GetAxis("Vertical"));
+        var input = new Vector3(Input.GetAxis("Horizontal"),  0, Input.GetAxis("Vertical"));
 
         input *= movementSpeed;
 
-        input = transform.TransformDirection(input);
-        movementDirection = input;
+        
 
         if (characterController.isGrounded)
         {
@@ -53,6 +48,15 @@ public class Movement : MonoBehaviour
                 input.y = movementDirection.y;
                 movementDirection = Vector3.Lerp(movementDirection, input, airControl * Time.deltaTime);
             }
+            if (c && !c.isGravityEnabled)
+            {
+                var ml = GetComponent<MouseLook>();
+                if (ml)
+                {
+                    c.transform.localRotation *= ml.head.localRotation;
+                    movementDirection = transform.TransformDirection(ml.head.transform.localRotation * Vector3.forward );
+                }
+            }
         }
 
         if (c && c.isGravityEnabled)
@@ -60,6 +64,8 @@ public class Movement : MonoBehaviour
             movementDirection.y -= gravity * Time.deltaTime;
         }
 
+        input = transform.TransformDirection(input);
+        movementDirection = input;
         characterController.Move(movementDirection * Time.deltaTime);
     }
 }
