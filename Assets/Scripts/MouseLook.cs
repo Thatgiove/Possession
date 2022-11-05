@@ -57,13 +57,11 @@ public class MouseLook : MonoBehaviour
             }
         }
 
-
+        //possiedi creature
         if (Input.GetMouseButtonDown(0))
         {
-            var point = new Vector3(
-                cam.pixelWidth / 2,
-                cam.pixelHeight / 2,
-                0);
+            var point = new Vector3( cam.pixelWidth / 2, cam.pixelHeight / 2, 0);
+
             Ray ray = cam.ScreenPointToRay(point);
             RaycastHit hit;
             
@@ -74,6 +72,7 @@ public class MouseLook : MonoBehaviour
 
                 if (head && creature.GetComponent<Creature>() || creature.GetComponent<Human>())
                 {
+                    var playerCanvas = FindObjectOfType<PlayerCanvas>();
                     var eye = creature.transform.Find("eye");
 
                     head.transform.parent = creature.transform;
@@ -96,7 +95,26 @@ public class MouseLook : MonoBehaviour
                     creature.AddComponent<Movement>();
                     creature.AddComponent<MouseLook>();
 
-                    print("POSSESS: " + hit.transform.gameObject.name);
+                    //print("POSSESS: " + hit.transform.gameObject.name);
+
+                    if (playerCanvas)
+                    {
+                        playerCanvas.creatureName.text = creature.GetComponent<Creature>().creatureName;
+
+                        if (creature.GetComponent<Human>())
+                        {
+                            playerCanvas.ToggleElements(true);
+                            
+                            playerCanvas.thoughts.text = creature.GetComponent<Human>()?.CreateThoughts();
+                            playerCanvas.items.text = creature.GetComponent<Human>()?.CreateInventory();
+                            playerCanvas.items.color = Color.green;
+                        }
+                        else
+                        {
+                            playerCanvas.ToggleElements(false);
+                        }
+                        
+                    }
                 }
 
 
