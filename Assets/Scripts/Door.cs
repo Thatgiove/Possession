@@ -1,10 +1,13 @@
+using System.Linq;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
     [SerializeField] bool canOpen;
     [SerializeField] bool isOpen;
+    [SerializeField] bool isExit;
     [SerializeField] bool isElectronic;
+    public string OpenObj;
 
     // Start is called before the first frame update
     void Start()
@@ -16,9 +19,10 @@ public class Door : MonoBehaviour
     {
     }
 
-    public void OpenDoor()
+    public void OpenDoor(string[] obj)
     {
-        if (!canOpen) return;
+        canOpen = obj.Contains(OpenObj);
+        if(!canOpen) return;
 
         if (!isOpen)
         {

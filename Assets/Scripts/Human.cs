@@ -38,5 +38,9 @@ public class Human : Creature
         }
         return t;
     }
-    
+
+    public string[] GetInventory()
+    {
+        return inventory;
+    }
 }
