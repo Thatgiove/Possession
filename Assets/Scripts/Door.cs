@@ -21,17 +21,38 @@ public class Door : MonoBehaviour
 
     public void OpenDoor(string[] obj)
     {
-        canOpen = obj.Contains(OpenObj);
+        canOpen = obj.Contains(OpenObj) || (isExit && AllEnginesAreShutdown());
         if(!canOpen) return;
-
-        if (!isOpen)
+        
+        var _Y = transform.eulerAngles.y;
+        if(_Y == 90 || _Y == -90)
         {
-            transform.eulerAngles = new Vector3(0f, 0f, 0f);
+            _Y = 0;
         }
         else
         {
-            transform.eulerAngles = new Vector3(0f, 90f, 0f);
+            _Y = 90;
+        }
+        if (!isOpen)
+        {
+            transform.eulerAngles = new Vector3(0f, _Y, 0f);
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(0f, _Y, 0f);
         }
         isOpen = !isOpen;
+    }
+
+
+
+    bool AllEnginesAreShutdown()
+    {
+        foreach (var en in FindObjectsOfType<Engine>())
+        {
+            if (en.active) return false;
+        };
+
+        return true;
     }
 }
