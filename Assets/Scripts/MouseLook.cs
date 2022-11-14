@@ -1,12 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MouseLook : MonoBehaviour
 {
     [SerializeField] float turnSpeed = 90f;
     [SerializeField] float headLowerAngleLimit = -80f;
     [SerializeField] float headUpperAngleLimit = 80f;
+
+    PlayerCanvas playerCanvas;
+    GameObject possessTxt;
+    GameObject creatureName;
 
     float yaw = 0f;
     float pitch = 0f;
@@ -26,10 +34,28 @@ public class MouseLook : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+
+        if (GetComponent<Patrol>() && GetComponent<NavMeshAgent>())
+        {
+            GetComponent<Patrol>().enabled = false;
+            GetComponent<NavMeshAgent>().enabled = false;
+        }
+
+        playerCanvas = FindObjectOfType<PlayerCanvas>();
+        if (playerCanvas)
+        {
+            possessTxt = playerCanvas.possessTxt;
+            creatureName = playerCanvas.creatureNameTxt;
+        }
+ 
     }
 
     private void Update()
     {
+        RenderName();
+
+
         var hor = Input.GetAxis("Mouse X") * Time.deltaTime * turnSpeed;
         var vert = Input.GetAxis("Mouse Y") * Time.deltaTime * turnSpeed;
 
@@ -48,8 +74,8 @@ public class MouseLook : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (!GetComponent<Human>()) return;
-            
-            var point = new Vector3(cam.pixelWidth / 2,cam.pixelHeight / 2, 0);
+
+            var point = new Vector3(cam.pixelWidth / 2, cam.pixelHeight / 2, 0);
             Ray ray = cam.ScreenPointToRay(point);
             RaycastHit hit;
 
@@ -66,20 +92,28 @@ public class MouseLook : MonoBehaviour
         //possiedi creature
         if (Input.GetMouseButtonDown(0))
         {
-            var point = new Vector3( cam.pixelWidth / 2, cam.pixelHeight / 2, 0);
+            var point = new Vector3(cam.pixelWidth / 2, cam.pixelHeight / 2, 0);
 
             Ray ray = cam.ScreenPointToRay(point);
             RaycastHit hit;
-            
-            if (Physics.Raycast(ray, out hit, 30))
+
+            if (Physics.Raycast(ray, out hit, 40))
             {
                 var creature = hit.transform.gameObject;
                 var head = FindObjectOfType<Head>();
 
                 if (head && creature.GetComponent<Creature>() || creature.GetComponent<Human>())
                 {
-                    var playerCanvas = FindObjectOfType<PlayerCanvas>();
+
+
                     var eye = creature.transform.Find("eye");
+
+                    if (GetComponent<Patrol>() && GetComponent<NavMeshAgent>())
+                    {
+                        GetComponent<Patrol>().enabled = true;
+                        GetComponent<NavMeshAgent>().enabled = true;
+                    }
+
 
                     head.transform.parent = creature.transform;
                     if (eye)
@@ -91,17 +125,17 @@ public class MouseLook : MonoBehaviour
                         head.transform.localPosition = Vector3.zero;
                     }
 
-                    
+
                     head.transform.localRotation = Quaternion.identity;
 
                     Destroy(GetComponent<Movement>());
                     Destroy(GetComponent<MouseLook>());
 
- 
+
                     creature.AddComponent<Movement>();
                     creature.AddComponent<MouseLook>();
 
-                    //print("POSSESS: " + hit.transform.gameObject.name);
+
 
                     if (playerCanvas)
                     {
@@ -110,7 +144,7 @@ public class MouseLook : MonoBehaviour
                         if (creature.GetComponent<Human>())
                         {
                             playerCanvas.ToggleElements(true);
-                            
+
                             playerCanvas.thoughts.text = creature.GetComponent<Human>()?.CreateThoughts();
                             playerCanvas.items.text = creature.GetComponent<Human>()?.CreateInventory();
                             playerCanvas.items.color = Color.green;
@@ -119,7 +153,7 @@ public class MouseLook : MonoBehaviour
                         {
                             playerCanvas.ToggleElements(false);
                         }
-                        
+
                     }
                 }
 
@@ -127,4 +161,24 @@ public class MouseLook : MonoBehaviour
             }
         }
     }
+
+    private void RenderName()
+    {
+        var point = new Vector3(cam.pixelWidth / 2, cam.pixelHeight / 2, 0);
+        Ray ray = cam.ScreenPointToRay(point);
+        RaycastHit hit;
+
+        possessTxt?.SetActive(false);
+        creatureName?.SetActive(false);
+        if (Physics.Raycast(ray, out hit, 30) &&
+            hit.transform.GetComponent<Creature>() &&
+            creatureName &&
+            possessTxt)
+        {
+            possessTxt.SetActive(true);
+            creatureName.SetActive(true);
+            creatureName.GetComponent<TMP_Text>().text = hit.transform.gameObject.name;
+        }
+    }
+
 }
