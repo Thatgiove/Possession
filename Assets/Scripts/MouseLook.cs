@@ -41,6 +41,10 @@ public class MouseLook : MonoBehaviour
             GetComponent<Patrol>().enabled = false;
             GetComponent<NavMeshAgent>().enabled = false;
         }
+        if (GetComponent<FlyingPatrol>())
+        {
+            GetComponent<FlyingPatrol>().enabled = false;
+        }
 
         playerCanvas = FindObjectOfType<PlayerCanvas>();
         if (playerCanvas)
@@ -113,7 +117,10 @@ public class MouseLook : MonoBehaviour
                         GetComponent<Patrol>().enabled = true;
                         GetComponent<NavMeshAgent>().enabled = true;
                     }
-
+                    if (GetComponent<FlyingPatrol>())
+                    {
+                        GetComponent<FlyingPatrol>().enabled = true;
+                    }
 
                     head.transform.parent = creature.transform;
                     if (eye)
