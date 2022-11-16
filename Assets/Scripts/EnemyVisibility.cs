@@ -61,11 +61,11 @@ public class EnemyVisibility : MonoBehaviour
 
         if(Physics.Raycast(ray, out hit/*, rayDistance*/))
         {
-            //print(hit.collider.transform);
-            if (hit.collider.transform.GetComponent<Human>())
+            if (hit.transform == target)
             {
                 canSee = true;
                 Debug.DrawLine(transform.position, hit.point, Color.red);
+                //FindObjectOfType<SceneController>().GameOver();
             }
             else
             {

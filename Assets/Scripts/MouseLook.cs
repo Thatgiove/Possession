@@ -83,13 +83,14 @@ public class MouseLook : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(point);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 30) && hit.transform.gameObject.GetComponent<Door>())
+            if (Physics.Raycast(ray, out hit, 3) && hit.transform.gameObject.GetComponent<Door>())
             {
                 hit.transform.gameObject.GetComponent<Door>().OpenDoor(GetComponent<Human>().GetInventory());
             }
-            if (Physics.Raycast(ray, out hit, 30) && hit.transform.gameObject.GetComponent<Engine>())
+            if (Physics.Raycast(ray, out hit, 3) && hit.transform.gameObject.GetComponent<Engine>())
             {
                 hit.transform.gameObject.GetComponent<Engine>().Deactivate();
+                FindObjectOfType<SceneController>().SetMaterial(hit.transform.gameObject.GetComponent<Engine>().index);
             }
         }
 
@@ -183,8 +184,28 @@ public class MouseLook : MonoBehaviour
             possessTxt)
         {
             possessTxt.SetActive(true);
+            possessTxt.GetComponent<TMP_Text>().text = "possess:";
             creatureName.SetActive(true);
             creatureName.GetComponent<TMP_Text>().text = hit.transform.gameObject.name;
+        }
+        if (Physics.Raycast(ray, out hit, 3) &&
+            GetComponent<Human>() &&
+            hit.transform.GetComponent<Door>() &&
+            creatureName &&
+            possessTxt)
+        {
+            creatureName.SetActive(true);
+            creatureName.GetComponent<TMP_Text>().text = "(E) Open door";
+        }        
+        if (Physics.Raycast(ray, out hit, 3) &&
+            GetComponent<Human>() &&
+            hit.transform.GetComponent<Engine>() &&
+            creatureName &&
+            possessTxt)
+        {
+  
+            creatureName.SetActive(true);
+            creatureName.GetComponent<TMP_Text>().text = "(E) Shutdown Engine";
         }
     }
 
