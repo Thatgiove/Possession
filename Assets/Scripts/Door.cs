@@ -6,7 +6,7 @@ public class Door : MonoBehaviour
     [SerializeField] bool canOpen;
     [SerializeField] bool isCell;
     [SerializeField] bool isOpen;
-    [SerializeField] bool unlocked;
+    public bool unlocked { get; set; }
     [SerializeField] bool isExit;
     [SerializeField] bool isElectronic;
     public string OpenObj;
@@ -15,6 +15,7 @@ public class Door : MonoBehaviour
     void Start()
     {
     }
+
 
 
     void Update()
@@ -31,25 +32,25 @@ public class Door : MonoBehaviour
 
         if (unlocked)
         {
-            var _Y = transform.eulerAngles.y;
-            if (_Y == 90 || _Y == -90)
-            {
-                _Y = 0;
-            }
-            else
-            {
-                _Y = 90;
-            }
-            if (!isOpen)
-            {
-                transform.eulerAngles = new Vector3(0f, _Y, 0f);
-            }
-            else if (isOpen)
-            {
-                transform.eulerAngles = new Vector3(0f, _Y, 0f);
-            }
-
-            isOpen = !isOpen;
+            //var _Y = transform.eulerAngles.y;
+            //if (_Y == 90 || _Y == -90)
+            //{
+            //    _Y = 0;
+            //}
+            //else
+            //{
+            //    _Y = 90;
+            //}
+            //if (!isOpen)
+            //{
+            //    transform.eulerAngles = new Vector3(0f, _Y, 0f);
+            //}
+            //else if (isOpen)
+            //{
+            //    transform.eulerAngles = new Vector3(0f, _Y, 0f);
+            //}
+            //isOpen = !isOpen;
+            gameObject.SetActive(false);
         }
         
      

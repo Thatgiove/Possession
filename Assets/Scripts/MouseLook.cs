@@ -45,6 +45,10 @@ public class MouseLook : MonoBehaviour
         {
             GetComponent<FlyingPatrol>().enabled = false;
         }
+        if (GetComponent<EnemyVisibility>())
+        {
+            GetComponent<EnemyVisibility>().enabled = false;
+        }
 
         playerCanvas = FindObjectOfType<PlayerCanvas>();
         if (playerCanvas)
@@ -105,71 +109,76 @@ public class MouseLook : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 40))
             {
                 var creature = hit.transform.gameObject;
-                var head = FindObjectOfType<Head>();
+                if (creature)
+                    Possess(creature);
+            }
+        }
+    }
+    public void Possess(GameObject creature)
+    {
 
-                if (head && creature.GetComponent<Creature>() || creature.GetComponent<Human>())
+        var head = FindObjectOfType<Head>();
+
+        if (head && creature.GetComponent<Creature>() || creature.GetComponent<Human>())
+        {
+
+            var eye = creature.transform.Find("eye");
+
+            if (GetComponent<Patrol>() && GetComponent<NavMeshAgent>())
+            {
+                GetComponent<Patrol>().enabled = true;
+                GetComponent<NavMeshAgent>().enabled = true;
+            }
+            if (GetComponent<FlyingPatrol>())
+            {
+                GetComponent<FlyingPatrol>().enabled = true;
+            }
+            if (GetComponent<EnemyVisibility>())
+            {
+                FindObjectOfType<SceneController>().EnableEnemyVisibilityAfter3Seconds(gameObject);
+            }
+
+            head.transform.parent = creature.transform;
+            if (eye)
+            {
+                head.transform.localPosition = eye.transform.localPosition;
+            }
+            else
+            {
+                head.transform.localPosition = Vector3.zero;
+            }
+
+
+            head.transform.localRotation = Quaternion.identity;
+
+            Destroy(GetComponent<Movement>());
+            Destroy(GetComponent<MouseLook>());
+
+
+            creature.AddComponent<Movement>();
+            creature.AddComponent<MouseLook>();
+
+            playerCanvas = FindObjectOfType<PlayerCanvas>();
+            if (playerCanvas)
+            {
+                playerCanvas.creatureName.text = creature.GetComponent<Creature>().creatureName;
+
+                if (creature.GetComponent<Human>())
                 {
+                    playerCanvas.ToggleElements(true);
 
-
-                    var eye = creature.transform.Find("eye");
-
-                    if (GetComponent<Patrol>() && GetComponent<NavMeshAgent>())
-                    {
-                        GetComponent<Patrol>().enabled = true;
-                        GetComponent<NavMeshAgent>().enabled = true;
-                    }
-                    if (GetComponent<FlyingPatrol>())
-                    {
-                        GetComponent<FlyingPatrol>().enabled = true;
-                    }
-
-                    head.transform.parent = creature.transform;
-                    if (eye)
-                    {
-                        head.transform.localPosition = eye.transform.localPosition;
-                    }
-                    else
-                    {
-                        head.transform.localPosition = Vector3.zero;
-                    }
-
-
-                    head.transform.localRotation = Quaternion.identity;
-
-                    Destroy(GetComponent<Movement>());
-                    Destroy(GetComponent<MouseLook>());
-
-
-                    creature.AddComponent<Movement>();
-                    creature.AddComponent<MouseLook>();
-
-
-
-                    if (playerCanvas)
-                    {
-                        playerCanvas.creatureName.text = creature.GetComponent<Creature>().creatureName;
-
-                        if (creature.GetComponent<Human>())
-                        {
-                            playerCanvas.ToggleElements(true);
-
-                            playerCanvas.thoughts.text = creature.GetComponent<Human>()?.CreateThoughts();
-                            playerCanvas.items.text = creature.GetComponent<Human>()?.CreateInventory();
-                            playerCanvas.items.color = Color.green;
-                        }
-                        else
-                        {
-                            playerCanvas.ToggleElements(false);
-                        }
-
-                    }
+                    playerCanvas.thoughts.text = creature.GetComponent<Human>()?.CreateThoughts();
+                    playerCanvas.items.text = creature.GetComponent<Human>()?.CreateInventory();
+                    playerCanvas.items.color = Color.green;
                 }
-
+                else
+                {
+                    playerCanvas.ToggleElements(false);
+                }
 
             }
         }
     }
-
     private void RenderName()
     {
         var point = new Vector3(cam.pixelWidth / 2, cam.pixelHeight / 2, 0);

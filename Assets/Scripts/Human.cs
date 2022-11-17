@@ -13,6 +13,7 @@ public class Human : Creature
     {
         
     }
+  
 
     // Update is called once per frame
     void Update()

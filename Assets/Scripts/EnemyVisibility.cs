@@ -59,13 +59,13 @@ public class EnemyVisibility : MonoBehaviour
 
         var canSee = false;
 
-        if(Physics.Raycast(ray, out hit/*, rayDistance*/))
+        if(Physics.Raycast(ray, out hit, 7))
         {
             if (hit.transform == target)
             {
                 canSee = true;
                 Debug.DrawLine(transform.position, hit.point, Color.red);
-                //FindObjectOfType<SceneController>().GameOver();
+                FindObjectOfType<SceneController>().GameOver();
             }
             else
             {
