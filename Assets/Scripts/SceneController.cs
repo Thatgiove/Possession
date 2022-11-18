@@ -14,7 +14,7 @@ public class SceneController : MonoBehaviour
 
     void Start()
     {
-        
+        Time.timeScale = 1;
     }
 
     public void GameOver()
@@ -54,7 +54,6 @@ public class SceneController : MonoBehaviour
     public void Restart()
     {
         isGameOver = false;
-        Time.timeScale = 1;
         SceneManager.LoadScene("testLevel");
     }    
     
