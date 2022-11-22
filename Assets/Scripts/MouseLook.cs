@@ -8,7 +8,7 @@ using UnityEngine.AI;
 
 public class MouseLook : MonoBehaviour
 {
-    [SerializeField] float turnSpeed = 90f;
+    [SerializeField] float turnSpeed = 250f;
     [SerializeField] float headLowerAngleLimit = -80f;
     [SerializeField] float headUpperAngleLimit = 80f;
 
@@ -89,7 +89,14 @@ public class MouseLook : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 3) && hit.transform.gameObject.GetComponent<Door>())
             {
-                hit.transform.gameObject.GetComponent<Door>().OpenDoor(GetComponent<Human>().GetInventory());
+                var door = hit.transform.gameObject.GetComponent<Door>();
+                door?.OpenDoor(GetComponent<Human>().GetInventory());
+                if (!door.unlocked)
+                {
+                    creatureName.SetActive(true);
+                    showText = false;
+                    StartCoroutine(ReactivateText());
+                }
             }
             if (Physics.Raycast(ray, out hit, 3) && hit.transform.gameObject.GetComponent<Engine>())
             {
@@ -162,13 +169,15 @@ public class MouseLook : MonoBehaviour
             if (playerCanvas)
             {
                 playerCanvas.creatureName.text = creature.GetComponent<Creature>().creatureName;
-
+                GetComponent<Human>()?.DestroyInventory();
                 if (creature.GetComponent<Human>())
                 {
                     playerCanvas.ToggleElements(true);
 
                     playerCanvas.thoughts.text = creature.GetComponent<Human>()?.CreateThoughts();
-                    playerCanvas.items.text = creature.GetComponent<Human>()?.CreateInventory();
+                    
+                    
+                    creature.GetComponent<Human>()?.CreateRealInventory();
                     playerCanvas.items.color = Color.green;
                 }
                 else
@@ -204,7 +213,15 @@ public class MouseLook : MonoBehaviour
             possessTxt)
         {
             creatureName.SetActive(true);
-            creatureName.GetComponent<TMP_Text>().text = "(E) Open door";
+
+            if (showText)
+            {
+                creatureName.GetComponent<TMP_Text>().text = "(E) Open door";
+            }
+            else
+            {
+                creatureName.GetComponent<TMP_Text>().text = "Closed: I need " + hit.transform.GetComponent<Door>().OpenObj;
+            }
         }        
         if (Physics.Raycast(ray, out hit, 3) &&
             GetComponent<Human>() &&
@@ -218,4 +235,10 @@ public class MouseLook : MonoBehaviour
         }
     }
 
+    bool showText = true;
+    IEnumerator ReactivateText()
+    {
+        yield return new WaitForSeconds(2);
+        showText = true;
+    }
 }
