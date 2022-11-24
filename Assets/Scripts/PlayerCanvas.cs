@@ -6,7 +6,9 @@ public class PlayerCanvas : MonoBehaviour
 
     public GameObject inventoryPanel;
     public GameObject thoughtsPanel;
-   
+    public GameObject itemsPanel;
+    public GameObject itemModel;
+
     public GameObject possessTxt;
     public GameObject creatureNameTxt;
     

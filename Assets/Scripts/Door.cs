@@ -9,7 +9,11 @@ public class Door : MonoBehaviour
     public bool unlocked { get; set; }
     [SerializeField] bool isExit;
     [SerializeField] bool isElectronic;
-    public string OpenObj;
+    [SerializeField] Item itemNeeded;
+    public Item GetItemNeeded()
+    {
+        return itemNeeded;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +26,9 @@ public class Door : MonoBehaviour
     {
     }
 
-    public void OpenDoor(string[] obj)
+    public void OpenDoor(Item[] obj)
     {
-        canOpen = obj.Contains(OpenObj) || (isExit && AllEnginesAreShutdown());
+        canOpen = obj.Contains(itemNeeded) || (isExit && AllEnginesAreShutdown());
 
         if (canOpen)
             unlocked = true;

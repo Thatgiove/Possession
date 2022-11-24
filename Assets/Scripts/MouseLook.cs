@@ -177,7 +177,7 @@ public class MouseLook : MonoBehaviour
                     playerCanvas.thoughts.text = creature.GetComponent<Human>()?.CreateThoughts();
                     
                     
-                    creature.GetComponent<Human>()?.CreateRealInventory();
+                    creature.GetComponent<Human>()?.CreateInventory();
                     playerCanvas.items.color = Color.green;
                 }
                 else
@@ -220,7 +220,11 @@ public class MouseLook : MonoBehaviour
             }
             else
             {
-                creatureName.GetComponent<TMP_Text>().text = "Closed: I need " + hit.transform.GetComponent<Door>().OpenObj;
+                if (hit.transform.GetComponent<Door>()?.GetItemNeeded())
+                    creatureName.GetComponent<TMP_Text>().text = "Closed: I need " + hit.transform.GetComponent<Door>()?.GetItemNeeded()?.itemName;
+                else
+                    creatureName.GetComponent<TMP_Text>().text = "Closed: I need to shutdown all engines";
+
             }
         }        
         if (Physics.Raycast(ray, out hit, 3) &&

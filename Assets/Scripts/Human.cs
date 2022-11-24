@@ -8,11 +8,8 @@ public class Human : Creature
 {
     [SerializeField] bool isEnemy;
     [SerializeField] string[] thoughts;
-    [SerializeField] string[] inventory;
 
-    [SerializeField] Item[] realInventory;
-    [SerializeField] GameObject itemsPanel;
-    [SerializeField] GameObject itemModel;
+    [SerializeField] Item[] inventory;
   
     void Start()
     {
@@ -35,22 +32,17 @@ public class Human : Creature
         }
         return t;
     }   
-    public string CreateInventory()
-    {
-        var t = "";
-        foreach (var _t in inventory)
-        {
-            t += $"{_t}, " ;
-        }
-        return t;
-    }
-    
-    public void CreateRealInventory()
-    {
-        if(itemsPanel && itemModel && realInventory.Length > 0)
-        {
 
-            foreach (var item in realInventory)
+    public void CreateInventory()
+    {
+        var playerCanvas = FindObjectOfType<PlayerCanvas>();
+
+        var itemsPanel = playerCanvas?.itemsPanel;
+        var itemModel = playerCanvas?.itemModel;
+
+        if (itemsPanel && itemModel && inventory.Length > 0)
+        {
+            foreach (var item in inventory)
             {
                 var _item = Instantiate(itemModel);
                 _item.transform.parent = itemsPanel.transform;
@@ -61,6 +53,9 @@ public class Human : Creature
     }
     public void DestroyInventory()
     {
+        var playerCanvas = FindObjectOfType<PlayerCanvas>();
+
+        var itemsPanel = playerCanvas?.itemsPanel;
         if (itemsPanel)
         {
             for (int i = itemsPanel.transform.childCount - 1; i >= 0; i--)
@@ -70,7 +65,7 @@ public class Human : Creature
         }
     }
 
-    public string[] GetInventory()
+    public Item[] GetInventory()
     {
         return inventory;
     }

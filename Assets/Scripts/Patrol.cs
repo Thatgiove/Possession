@@ -29,7 +29,7 @@ public class Patrol : MonoBehaviour
         // Returns if no points have been set up
         if (points.Length == 0)
             return;
-
+       
         // Set the agent to go to the currently selected destination.
         agent.destination = points[destPoint].position;
 
@@ -41,9 +41,7 @@ public class Patrol : MonoBehaviour
 
     void Update()
     {
-        // Choose the next destination point when the agent gets
-        // close to the current one.
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        if (!agent.pathPending && agent.isOnNavMesh && agent.remainingDistance < 0.5f)
             GotoNextPoint();
     }
 }
