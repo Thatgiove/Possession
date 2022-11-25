@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class SceneController : MonoBehaviour
     public Material greenMaterial;
     public GameObject cellDoor;
     [SerializeField] GameObject gameOverPanel;
+    [SerializeField] GameObject levelProgressionTxt;
 
     public bool isGameOver;
 
@@ -44,11 +46,32 @@ public class SceneController : MonoBehaviour
     {
         StartCoroutine(EnableEnemyVisibility(creature));
     }
+
+    public void ActivatelevelProgressionTxt()
+    {
+        levelProgressionTxt.SetActive(true);
+
+        if (!AllEnginesAreShutdown())
+        {
+            levelProgressionTxt.GetComponent<TMP_Text>().text = "I Think there are more...";
+
+        }
+        else
+        {
+            levelProgressionTxt.GetComponent<TMP_Text>().text = "Ok I think it's all, I can escape!"; ;
+        }
+        StartCoroutine(DeactivatelevelProgressionTxt());
+    }
     IEnumerator EnableEnemyVisibility(GameObject creature)
     {
         yield return new WaitForSeconds(3);
         if (creature.GetComponent<EnemyVisibility>())
             creature.GetComponent<EnemyVisibility>().enabled = true;
+    } 
+    IEnumerator DeactivatelevelProgressionTxt()
+    {
+        yield return new WaitForSeconds(3);
+        levelProgressionTxt.SetActive(false);
     }
 
     public void Restart()
@@ -60,5 +83,15 @@ public class SceneController : MonoBehaviour
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public bool AllEnginesAreShutdown()
+    {
+        foreach (var en in FindObjectsOfType<Engine>())
+        {
+            if (en.active) return false;
+        };
+
+        return true;
     }
 }

@@ -12,5 +12,6 @@ public class Engine : MonoBehaviour
     {
         active = false;
         light.SetActive(false);
+        FindObjectOfType<SceneController>().ActivatelevelProgressionTxt();
     }
 }

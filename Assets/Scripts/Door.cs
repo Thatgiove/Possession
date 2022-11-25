@@ -28,7 +28,7 @@ public class Door : MonoBehaviour
 
     public void OpenDoor(Item[] obj)
     {
-        canOpen = obj.Contains(itemNeeded) || (isExit && AllEnginesAreShutdown());
+        canOpen = obj.Contains(itemNeeded) || (isExit && FindObjectOfType<SceneController>().AllEnginesAreShutdown());
 
         if (canOpen)
             unlocked = true;
@@ -58,17 +58,5 @@ public class Door : MonoBehaviour
         }
         
      
-    }
-
-
-
-    bool AllEnginesAreShutdown()
-    {
-        foreach (var en in FindObjectsOfType<Engine>())
-        {
-            if (en.active) return false;
-        };
-
-        return true;
     }
 }
