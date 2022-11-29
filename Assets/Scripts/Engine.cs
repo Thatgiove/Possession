@@ -10,8 +10,11 @@ public class Engine : MonoBehaviour
 
     public void Deactivate()
     {
-        active = false;
-        light.SetActive(false);
-        FindObjectOfType<SceneController>().ActivatelevelProgressionTxt();
+        if (active)
+        {
+            active = false;
+            light.SetActive(false);
+            FindObjectOfType<SceneController>().ActivatelevelProgressionTxt();
+        }
     }
 }

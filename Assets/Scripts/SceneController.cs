@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -50,10 +52,9 @@ public class SceneController : MonoBehaviour
     public void ActivatelevelProgressionTxt()
     {
         levelProgressionTxt.SetActive(true);
-
         if (!AllEnginesAreShutdown())
         {
-            levelProgressionTxt.GetComponent<TMP_Text>().text = "I Think there are more...";
+            levelProgressionTxt.GetComponent<TMP_Text>().text = $"I Think there are {ActiveEngines()} more...";
 
         }
         else
@@ -93,5 +94,10 @@ public class SceneController : MonoBehaviour
         };
 
         return true;
+    }
+
+    int ActiveEngines()
+    {
+        return FindObjectsOfType<Engine>().Where(e => e.active).Count();   
     }
 }
