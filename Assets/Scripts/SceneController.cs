@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,15 @@ public class SceneController : MonoBehaviour
     [SerializeField] GameObject levelProgressionTxt;
 
     public bool isGameOver;
+    public IDictionary<string, Func<bool>> conditions = new Dictionary<string, Func<bool>>();
 
+    private void Awake()
+    {
+        conditions.Add("Engine", AllEnginesAreShutdown);
+    }
     void Start()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 1;        
     }
 
     public void GameOver()

@@ -220,11 +220,7 @@ public class MouseLook : MonoBehaviour
             }
             else
             {
-                if (hit.transform.GetComponent<Door>()?.GetItemNeeded())
-                    creatureName.GetComponent<TMP_Text>().text = "Closed: I need " + hit.transform.GetComponent<Door>()?.GetItemNeeded()?.itemName;
-                else
-                    creatureName.GetComponent<TMP_Text>().text = "Closed: I need to shutdown all engines";
-
+                creatureName.GetComponent<TMP_Text>().text = hit.transform.GetComponent<Door>()?.GetWhyIsnotOpen();
             }
         }        
         if (Physics.Raycast(ray, out hit, 3) &&
