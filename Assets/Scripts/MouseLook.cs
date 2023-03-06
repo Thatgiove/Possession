@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -35,22 +32,10 @@ public class MouseLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        DisableAI(false);
 
-        if (GetComponent<Patrol>() && GetComponent<NavMeshAgent>())
-        {
-            GetComponent<Patrol>().enabled = false;
-            GetComponent<NavMeshAgent>().enabled = false;
-        }
-        if (GetComponent<FlyingPatrol>())
-        {
-            GetComponent<FlyingPatrol>().enabled = false;
-        }
-        if (GetComponent<EnemyVisibility>())
-        {
-            GetComponent<EnemyVisibility>().enabled = false;
-        }
 
-        playerCanvas = FindObjectOfType<PlayerCanvas>();
+         playerCanvas = FindObjectOfType<PlayerCanvas>();
         if (playerCanvas)
         {
             possessTxt = playerCanvas.possessTxt;
@@ -58,6 +43,7 @@ public class MouseLook : MonoBehaviour
         }
  
     }
+
 
     private void Update()
     {
@@ -131,20 +117,9 @@ public class MouseLook : MonoBehaviour
 
             var eye = creature.transform.Find("eye");
 
-            if (GetComponent<Patrol>() && GetComponent<NavMeshAgent>())
-            {
-                GetComponent<Patrol>().enabled = true;
-                GetComponent<NavMeshAgent>().enabled = true;
-            }
-            if (GetComponent<FlyingPatrol>())
-            {
-                GetComponent<FlyingPatrol>().enabled = true;
-            }
-            if (GetComponent<EnemyVisibility>())
-            {
-                FindObjectOfType<SceneController>().EnableEnemyVisibilityAfter3Seconds(gameObject);
-            }
 
+            DisableAI(true);
+          
             head.transform.parent = creature.transform;
             if (eye)
             {
@@ -240,5 +215,32 @@ public class MouseLook : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         showText = true;
+    }
+
+    void DisableAI(bool isDisabled)
+    {
+        //false quando prendo il controllo, true quando lo perdo 
+        if (GetComponent<Patrol>() && GetComponent<NavMeshAgent>())
+        {
+            GetComponent<Patrol>().enabled = isDisabled;
+            GetComponent<NavMeshAgent>().enabled = isDisabled;
+        }
+        if (GetComponent<FlyingPatrol>())
+        {
+            GetComponent<FlyingPatrol>().enabled = isDisabled;
+        }
+        if (GetComponent<EnemyVisibility>())
+        {
+            GetComponent<EnemyVisibility>().enabled = isDisabled;
+
+            if (isDisabled)
+            {
+                FindObjectOfType<SceneController>().EnableEnemyVisibilityAfter3Seconds(gameObject);
+            }
+        }
+        if (GetComponent<Light>())
+        {
+            GetComponent<Light>().enabled = isDisabled;
+        }
     }
 }

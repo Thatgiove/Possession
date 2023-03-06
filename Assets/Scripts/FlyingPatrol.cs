@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
+/*
+ TODO implementare algoritmo di pathfinding aereo
+ */
 public class FlyingPatrol : MonoBehaviour
 {
     [SerializeField] Transform[] points;

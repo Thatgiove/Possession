@@ -8,17 +8,18 @@ public class Door : MonoBehaviour
     [SerializeField] bool canOpen;
     [SerializeField] bool isCell;
     [SerializeField] bool isOpen;
-    public bool unlocked { get; set; }
     [SerializeField] bool isExit;
     [SerializeField] bool isElectronic;
-    [SerializeField] Item itemNeeded;
 
+    [SerializeField] Item itemNeeded;
     [SerializeField] string[] openConditions;
 
     SceneController sceneController;
-
-    public IDictionary<string, string> conditionsDescription = new Dictionary<string, string>();
     string whyIsnotOpen;
+
+    public bool unlocked { get; set; }
+    public IDictionary<string, string> conditionsDescription = new Dictionary<string, string>();
+
 
     public string GetWhyIsnotOpen()
     {
@@ -29,7 +30,7 @@ public class Door : MonoBehaviour
     void Start()
     {
         sceneController = FindObjectOfType<SceneController>();
-        conditionsDescription.Add("Engine", "Closed: I need to shutdown all engines first");
+        conditionsDescription.Add("Engine", "I need to shutdown all engines first");
     }
 
 

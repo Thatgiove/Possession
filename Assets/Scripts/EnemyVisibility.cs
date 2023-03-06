@@ -12,7 +12,6 @@ public class EnemyVisibility : MonoBehaviour
 
     void Start()
     {
-        
     }
 
     void Update()
@@ -81,6 +80,7 @@ public class EnemyVisibility : MonoBehaviour
 
     }
 }
+
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(EnemyVisibility))]

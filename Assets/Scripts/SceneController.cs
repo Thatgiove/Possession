@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +15,12 @@ public class SceneController : MonoBehaviour
     [SerializeField] GameObject levelProgressionTxt;
 
     public bool isGameOver;
+
+    /****
+     * conditions è un oggetto globale. I gameobject (ad es. le porte)
+     * possono avere un array di condizioni chiamato "openConditions", che devono essere
+     * soddisfatte per essere attivati
+     ****/
     public IDictionary<string, Func<bool>> conditions = new Dictionary<string, Func<bool>>();
 
     private void Awake()
@@ -73,7 +78,11 @@ public class SceneController : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         if (creature.GetComponent<EnemyVisibility>())
+        {
             creature.GetComponent<EnemyVisibility>().enabled = true;
+        }
+           
+
     } 
     IEnumerator DeactivatelevelProgressionTxt()
     {
