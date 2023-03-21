@@ -970,6 +970,7 @@ MonoBehaviour:
   creatureName: Putz
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
   isEnemy: 1
@@ -1234,6 +1235,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &43952130
@@ -2597,6 +2599,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &114364671
@@ -3108,6 +3111,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &120923265
@@ -3342,6 +3346,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &143628445
@@ -3655,6 +3660,7 @@ MonoBehaviour:
   creatureName: Marron
   isGravityEnabled: 1
   canPossess: 1
+  isBug: 0
   velocity: 0
   turnSpeed: 0
   isEnemy: 1
@@ -5843,6 +5849,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &243809186
@@ -6623,6 +6630,7 @@ MonoBehaviour:
   creatureName: Bird
   isGravityEnabled: 0
   canPossess: 1
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &271731904
@@ -6974,6 +6982,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &291372751
@@ -7023,7 +7032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.922
+      value: 14.902588
       objectReference: {fileID: 0}
     - target: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7031,11 +7040,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.076
+      value: -6.374613
       objectReference: {fileID: 0}
     - target: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99974287
+      value: 0.50814486
       objectReference: {fileID: 0}
     - target: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7043,7 +7052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.022678386
+      value: 0.8612717
       objectReference: {fileID: 0}
     - target: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
       propertyPath: m_LocalRotation.z
@@ -7055,7 +7064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 2.599
+      value: 118.919
       objectReference: {fileID: 0}
     - target: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -7103,6 +7112,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &293347582
@@ -8231,6 +8241,7 @@ MonoBehaviour:
   creatureName: Cusio
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
   isEnemy: 0
@@ -9790,7 +9801,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1672965039234772, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_Name
-      value: bug (6)
+      value: __TEST____BUG
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_RootOrder
@@ -9798,47 +9809,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.028668141
+      value: 0.14075315
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.028668141
+      value: 0.14075315
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.028668141
+      value: 0.14075315
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 66.795
+      value: 64.3272
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.121
+      value: 0.242
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.075
+      value: 20.34
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.99864775
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.051987346
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 5.96
       objectReference: {fileID: 0}
     - target: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -9851,7 +9862,11 @@ PrefabInstance:
     - target: {fileID: 23442358521054224, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c70e075a2144ba04784d74b7b2889fd3, type: 2}
+      objectReference: {fileID: 2100000, guid: 1b01e7655719e56488182db7841f3139, type: 2}
+    - target: {fileID: 64329174310297594, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
 --- !u!1001 &414723484
@@ -9864,6 +9879,10 @@ PrefabInstance:
     - target: {fileID: 1595817086472242, guid: 54634004fe05e614b9925b8618f478d7, type: 3}
       propertyPath: m_Name
       value: SM_Buildings_WallWindowDouble_5x3_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595817086472242, guid: 54634004fe05e614b9925b8618f478d7, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 4767821442511866, guid: 54634004fe05e614b9925b8618f478d7, type: 3}
       propertyPath: m_RootOrder
@@ -9879,7 +9898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4767821442511866, guid: 54634004fe05e614b9925b8618f478d7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.82322
+      value: 1.2017366
       objectReference: {fileID: 0}
     - target: {fileID: 4767821442511866, guid: 54634004fe05e614b9925b8618f478d7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9891,7 +9910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4767821442511866, guid: 54634004fe05e614b9925b8618f478d7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.32
+      value: -8.362
       objectReference: {fileID: 0}
     - target: {fileID: 4767821442511866, guid: 54634004fe05e614b9925b8618f478d7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -9924,7 +9943,7 @@ PrefabInstance:
     - target: {fileID: 23542925983806092, guid: 54634004fe05e614b9925b8618f478d7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: eb9c90035dc1fc1468735358308124db, type: 2}
+      objectReference: {fileID: 2100000, guid: 63869e7b5475e1e4fa446d9f3ceb4da3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54634004fe05e614b9925b8618f478d7, type: 3}
 --- !u!4 &414723485 stripped
@@ -11193,6 +11212,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &477382561
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1188514689771810, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_Name
+      value: SM_Primitive_Tube_05 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_RootOrder
+      value: 122
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.29028752
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.819093
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.29028752
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 77.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.078
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.405
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.000024944105
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000024441611
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70880747
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.705402
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -89.724
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.006
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
 --- !u!1001 &477707124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13709,6 +13797,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &555715118
@@ -15974,6 +16063,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &677895569
@@ -17731,6 +17821,7 @@ MonoBehaviour:
   creatureName: Cribiors
   isGravityEnabled: 1
   canPossess: 1
+  isBug: 0
   velocity: 0
   turnSpeed: 0
   isEnemy: 0
@@ -17780,6 +17871,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &768401804
@@ -20199,6 +20291,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Buildings_Wall_5x3_01P (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1194301909540060, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_RootOrder
       value: 20
@@ -20221,7 +20317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.189999
+      value: -8.31
       objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20254,7 +20350,7 @@ PrefabInstance:
     - target: {fileID: 23741573666390980, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: eb9c90035dc1fc1468735358308124db, type: 2}
+      objectReference: {fileID: 2100000, guid: 63869e7b5475e1e4fa446d9f3ceb4da3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
 --- !u!1001 &878698531
@@ -21343,6 +21439,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &926221959
@@ -21388,6 +21485,7 @@ MonoBehaviour:
   turnSpeed: 200
   headLowerAngleLimit: -80
   headUpperAngleLimit: 80
+  disableHeadAxis: 0
   head: {fileID: 521138013}
 --- !u!114 &929776879
 MonoBehaviour:
@@ -21437,6 +21535,7 @@ MonoBehaviour:
   creatureName: Denzel
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
   isEnemy: 0
@@ -21967,21 +22066,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Buildings_Wall_5x3_01P (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1194301909540060, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_RootOrder
       value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.8601458
+      value: 1.1088328
       objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.2401965
       objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5202858
+      objectReference: {fileID: 0}
+    - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.63
+      value: 6.38
       objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21989,7 +22096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.35
+      value: -8.285
       objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22022,7 +22129,7 @@ PrefabInstance:
     - target: {fileID: 23741573666390980, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: eb9c90035dc1fc1468735358308124db, type: 2}
+      objectReference: {fileID: 2100000, guid: 63869e7b5475e1e4fa446d9f3ceb4da3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
 --- !u!1001 &951668538
@@ -22892,6 +22999,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &982410150
@@ -23376,6 +23484,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &1002044040
@@ -25315,6 +25424,7 @@ MonoBehaviour:
   creatureName: Magalli
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
   isEnemy: 1
@@ -25924,6 +26034,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Buildings_Wall_5x3_01P (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 1194301909540060, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -25946,7 +26060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.254
+      value: -8.17
       objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_LocalRotation.w
@@ -25979,7 +26093,7 @@ PrefabInstance:
     - target: {fileID: 23741573666390980, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: eb9c90035dc1fc1468735358308124db, type: 2}
+      objectReference: {fileID: 2100000, guid: 63869e7b5475e1e4fa446d9f3ceb4da3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
 --- !u!4 &1161646013 stripped
@@ -26160,6 +26274,7 @@ MonoBehaviour:
   creatureName: Marrianne
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
   isEnemy: 0
@@ -26952,6 +27067,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Buildings_Wall_5x3_01P (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1194301909540060, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -26966,7 +27085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.037
       objectReference: {fileID: 0}
     - target: {fileID: 4719498968730246, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_LocalPosition.y
@@ -27007,7 +27126,7 @@ PrefabInstance:
     - target: {fileID: 23741573666390980, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: eb9c90035dc1fc1468735358308124db, type: 2}
+      objectReference: {fileID: 2100000, guid: 63869e7b5475e1e4fa446d9f3ceb4da3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2fe7f9dc74a5ff4696014f411430c80, type: 3}
 --- !u!1001 &1183192865
@@ -27642,6 +27761,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &1209319483
@@ -28188,6 +28308,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4198256200778946, guid: e025362a5346a474ba28d4f1c1eee293, type: 3}
   m_PrefabInstance: {fileID: 884028409}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1265722483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1265722484}
+  m_Layer: 0
+  m_Name: eye
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1265722484
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265722483}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.48, z: 0.36}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1320251829}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1269811295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29596,28 +29747,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creatureName: Bug
-  isGravityEnabled: 1
+  isGravityEnabled: 0
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
---- !u!143 &1320251819
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320251817}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.21
-  m_Radius: 0.73
-  m_SlopeLimit: 45
-  m_StepOffset: 0
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &1320251824
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -29625,7 +29759,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320251817}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.49321246
   m_Speed: 0.4
@@ -29647,7 +29781,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320251817}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5437083957deaa4a8dba7467354d94d, type: 3}
   m_Name: 
@@ -29657,6 +29791,57 @@ MonoBehaviour:
   - {fileID: 241579321}
   - {fileID: 116778730}
   - {fileID: 1225669138}
+--- !u!4 &1320251829 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4416210275441194, guid: bfb03ce7c2387de4c832cfea29400ffd, type: 3}
+  m_PrefabInstance: {fileID: 412277831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1320251830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320251817}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4fa697d91869ba478d3ec2b7608278c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myNormal: {x: 0, y: 0, z: 0}
+  minX: -45
+  maxX: 45
+  insectRotation: {x: 0, y: 0, z: 0, w: 0}
+--- !u!54 &1320251831
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320251817}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &1320251832
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320251817}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5873679
+  m_Height: 1.2243617
+  m_Direction: 0
+  m_Center: {x: -0.03404016, y: -0.012904117, z: 0.028952284}
 --- !u!1001 &1325101038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31786,6 +31971,7 @@ MonoBehaviour:
   creatureName: Jenna
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
   isEnemy: 1
@@ -32673,6 +32859,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &1460335989
@@ -34701,6 +34888,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &1563531992
@@ -37444,7 +37632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
       propertyPath: m_LocalScale.y
-      value: 10.819093
+      value: 6.4953485
       objectReference: {fileID: 0}
     - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
       propertyPath: m_LocalScale.z
@@ -37452,35 +37640,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 77.9
+      value: 61.447
       objectReference: {fileID: 0}
     - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.078
+      value: 3.573
       objectReference: {fileID: 0}
     - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.405
+      value: 19.815
       objectReference: {fileID: 0}
     - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000024944105
+      value: 0.50244254
       objectReference: {fileID: 0}
     - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000024441611
+      value: -0.5048686
       objectReference: {fileID: 0}
     - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70880747
+      value: 0.49750954
       objectReference: {fileID: 0}
     - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.705402
+      value: 0.4951197
       objectReference: {fileID: 0}
     - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -89.724
+      value: -89.725
       objectReference: {fileID: 0}
     - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -37488,7 +37676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4221631643254694, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -0.006
+      value: -90.852
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a0bbf342b1b274429b291c849e7f818, type: 3}
@@ -37793,6 +37981,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &1665562579
@@ -39091,6 +39280,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &1726496233
@@ -39952,6 +40142,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &1765759432
@@ -40321,6 +40512,7 @@ MonoBehaviour:
   creatureName: Gulliver
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
   isEnemy: 0
@@ -41610,6 +41802,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &1830733246
@@ -42277,6 +42470,7 @@ MonoBehaviour:
   creatureName: Egel
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
   isEnemy: 1
@@ -42950,6 +43144,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1241570235972288, guid: 9d12464ab7195104c9a0ed50a08ccbea, type: 3}
+      propertyPath: m_TagString
+      value: Ceiling
+      objectReference: {fileID: 0}
     - target: {fileID: 4020298532017394, guid: 9d12464ab7195104c9a0ed50a08ccbea, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -43009,7 +43207,7 @@ PrefabInstance:
     - target: {fileID: 23284017083126772, guid: 9d12464ab7195104c9a0ed50a08ccbea, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: eb9c90035dc1fc1468735358308124db, type: 2}
+      objectReference: {fileID: 2100000, guid: 63869e7b5475e1e4fa446d9f3ceb4da3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d12464ab7195104c9a0ed50a08ccbea, type: 3}
 --- !u!1001 &1901354759
@@ -43124,6 +43322,7 @@ MonoBehaviour:
   creatureName: June
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
   isEnemy: 0
@@ -45372,6 +45571,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &2021925560
@@ -46119,6 +46319,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &2047968134
@@ -47135,6 +47336,7 @@ MonoBehaviour:
   creatureName: Bird
   isGravityEnabled: 0
   canPossess: 1
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!65 &2109099619
@@ -47762,6 +47964,7 @@ MonoBehaviour:
   creatureName: Bug
   isGravityEnabled: 1
   canPossess: 0
+  isBug: 0
   velocity: 0
   turnSpeed: 0
 --- !u!143 &2133254617

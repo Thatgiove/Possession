@@ -29,23 +29,31 @@ public class Movement : MonoBehaviour
 
         input *= movementSpeed;
 
-        if (characterController.isGrounded)
+        if (characterController && characterController.isGrounded)
         {
-            //if (Input.GetButton("Jump"))
-            //{
-            //}
-            //else
-            //{
-            //}
+            if (Input.GetButton("Jump"))
+            {
+            }
+            else
+            {
+            }
         }
         else
         {
+            //gli animali si muovono sul piano
             if (c.isGravityEnabled)
             {
                 movementDirection.y -= gravity * Time.deltaTime;
                 input.y = movementDirection.y;
                 movementDirection = Vector3.Lerp(movementDirection, input, airControl * Time.deltaTime); 
             }
+            //TODO FARE MEGLIO gli insetti camminano sui muri 
+            else if (!c.isGravityEnabled && c.GetComponent<Insect>())
+            {
+
+                return;
+            }
+            //gli uccelli si muovono in tutte le direzioni
             else
             {
                 var ml = GetComponent<MouseLook>();

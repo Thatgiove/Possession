@@ -8,6 +8,7 @@ public class MouseLook : MonoBehaviour
     [SerializeField] float turnSpeed = 250f;
     [SerializeField] float headLowerAngleLimit = -80f;
     [SerializeField] float headUpperAngleLimit = 80f;
+    [SerializeField] bool disableHeadAxis = false;
 
     PlayerCanvas playerCanvas;
     GameObject possessTxt;
@@ -26,8 +27,16 @@ public class MouseLook : MonoBehaviour
         cam = GetComponentInChildren<Camera>();
 
         head = cam.transform;
-        bodyStartOrientation = transform.localRotation;
-        headStartOrientation = head.transform.localRotation;
+        if (GetComponent<Insect>())
+        {
+            GetComponent<MouseLook>().enabled = false;
+        }
+        else
+        {
+            bodyStartOrientation = transform.localRotation;
+            headStartOrientation = head.transform.localRotation;
+        }
+      
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -58,10 +67,12 @@ public class MouseLook : MonoBehaviour
 
         pitch = Mathf.Clamp(pitch, headLowerAngleLimit, headUpperAngleLimit);
 
+
         var bodyRot = Quaternion.AngleAxis(yaw, Vector3.up);
         var headRot = Quaternion.AngleAxis(pitch * -1, Vector3.right);
 
         transform.localRotation = bodyRot * bodyStartOrientation;
+       
         head.localRotation = headRot * headStartOrientation;
 
         //Apri la porte e azioni
@@ -124,12 +135,17 @@ public class MouseLook : MonoBehaviour
             if (eye)
             {
                 head.transform.localPosition = eye.transform.localPosition;
+                head.transform.localRotation = eye.transform.localRotation;
             }
             else
             {
                 head.transform.localPosition = Vector3.zero;
             }
 
+            if (creature.GetComponent<Insect>())
+            {
+                creature.GetComponent<Insect>().enabled = true;
+            }
 
             head.transform.localRotation = Quaternion.identity;
 
@@ -163,6 +179,7 @@ public class MouseLook : MonoBehaviour
             }
         }
     }
+    //TODO - questa logica va spostata nel PlayerCanvas
     private void RenderName()
     {
         var point = new Vector3(cam.pixelWidth / 2, cam.pixelHeight / 2, 0);
@@ -173,6 +190,7 @@ public class MouseLook : MonoBehaviour
         creatureName?.SetActive(false);
         if (Physics.Raycast(ray, out hit, 30) &&
             hit.transform.GetComponent<Creature>() &&
+            !hit.transform.GetComponent<MouseLook>() &&
             creatureName &&
             possessTxt)
         {
@@ -181,6 +199,7 @@ public class MouseLook : MonoBehaviour
             creatureName.SetActive(true);
             creatureName.GetComponent<TMP_Text>().text = hit.transform.gameObject.name;
         }
+
         if (Physics.Raycast(ray, out hit, 3) &&
             GetComponent<Human>() &&
             hit.transform.GetComponent<Door>() &&
