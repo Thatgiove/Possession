@@ -21,9 +21,9 @@ public class Movement : MonoBehaviour
         c = GetComponent<Creature>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        if(!c) return;
+        if(!c || c.GetComponent<Insect>()) return;
 
         var input = new Vector3(Input.GetAxis("Horizontal"),  0, Input.GetAxis("Vertical"));
 
@@ -50,16 +50,18 @@ public class Movement : MonoBehaviour
             //TODO FARE MEGLIO gli insetti camminano sui muri 
             else if (!c.isGravityEnabled && c.GetComponent<Insect>())
             {
-
                 return;
             }
+            //TODO creare la classe Bird?
             //gli uccelli si muovono in tutte le direzioni
             else
             {
-                var ml = GetComponent<MouseLook>();
+                ml = GetComponent<MouseLook>();
                 if (ml)
                 {
-                    c.transform.localRotation *= ml.head.localRotation;
+                    // Aggiorna la rotazione locale dell'oggetto
+                    c.transform.localRotation = 
+                        Quaternion.Euler(0f, transform.localRotation.eulerAngles.y, 0f) * ml.head.localRotation;
                     movementDirection = transform.TransformDirection(ml.head.transform.localRotation * Vector3.forward );
                 }
             }

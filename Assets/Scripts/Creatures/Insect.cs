@@ -2,72 +2,61 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class Insect : MonoBehaviour
+public class Insect : Creature
 {
     Rigidbody rb;
     Vector3 myNormal;
     Camera cam;
     float gravity = -6f;
     Transform head;
-    float tiltAngle = 0;
-    public float minX = -80f;
-    public float maxX = 80.0f;
+    public float distanceForClimbing = .002f;
     Vector3 extraVect = Vector3.zero;
     PlayerCanvas playerCanvas;
-    
+
     void Start()
     {
         head = transform.Find("head");
         rb = GetComponent<Rigidbody>();
-
-        myNormal = transform.up;
-        if (rb)
-            rb.freezeRotation = true;
-
         playerCanvas = FindObjectOfType<PlayerCanvas>();
+
+        myNormal = Vector3.up;
+        
+        if (rb)
+        {
+            rb.freezeRotation = true;
+        }
     }
 
 
     void Update()
     {
-        playerCanvas.creatureNameTxt.GetComponent<TMP_Text>().text = "";
+        //TODO QUI NON VA BENE - TOGLIERE
         playerCanvas.possessTxt.GetComponent<TMP_Text>().text = "";
-
+        playerCanvas.creatureNameTxt.GetComponent<TMP_Text>().text = "";
         cam = GetComponentInChildren<Camera>();
+
         if (cam)
         {
             var point = new Vector3(cam.pixelWidth / 2, cam.pixelHeight / 2, 0);
             Ray ray = cam.ScreenPointToRay(point);
             RaycastHit hit;
 
-            /*TODO parametrizzare la distanza*/
-            if (Physics.Raycast(ray, out hit, 1))
+            if (Physics.Raycast(ray, out hit, distanceForClimbing))
             {
-                var wall = hit.transform;
-                
-                if (wall.tag == "Wall" || wall.tag == "Ceiling")
-                    playerCanvas.possessTxt.GetComponent<TMP_Text>().text = "[SPACE] Climb the wall";
-    
-          
-                if (Input.GetButtonDown("Jump"))
+                //il raycast non funziona se punto per terra
+                if(hit.normal != myNormal)
                 {
-                    //TODO - trovare il calcolo per adesso il normale del soffitto è l'asse delle Y (up)
-                    //mentre quello del muro e l'asse Z (forward)
-                    if (wall.tag == "Ceiling")
+                    playerCanvas.possessTxt.GetComponent<TMP_Text>().text = "[SPACE] Climb the wall";
+                    
+                    if (Input.GetButtonDown("Jump"))
                     {
-                        extraVect = Vector3.zero;
-                        CalulateNewNormal(Vector3.Cross(wall.right, wall.forward));
-                    }
-                    else if (wall.tag == "Wall")
-                    {
-                        extraVect = Vector3.zero;
-                        CalulateNewNormal(Vector3.Cross(wall.right, wall.up));
+                        CalulateNewNormal(hit.normal);
                     }
                 }
             }
 
             //Con questo Raycast vediamo su quale superficie stiamo camminando 
-            //TODO - non entrare sempre
+            //TODO - questa logica è da rivedere non entrare sempre
             if (Physics.Raycast(transform.position, -myNormal, out hit, 1))
             {
                 //Quando entriamo nelle tubature la gravità ritorna normale
@@ -77,27 +66,12 @@ public class Insect : MonoBehaviour
                     StartCoroutine(CalulateNewNormalAfterTime(Vector3.up));
                 }
             }
-
-           
-        }
-       
-
-        var mouseX = Input.GetAxis("Mouse X") * Time.deltaTime * 250;
-
-        //TODO L'input è globale,gestirlo bene
-        transform.RotateAround(transform.position, transform.up, mouseX);
-
-        if (head)
-        {
-            tiltAngle += Input.GetAxis("Mouse Y") * -1;
-            tiltAngle = Mathf.Clamp(tiltAngle, minX, maxX);
-            head.transform.localRotation = Quaternion.Euler(tiltAngle, 0, 0);
         }
     }
 
     void FixedUpdate()
     {
-        if (rb)
+        if (rb && GetComponent<Soul>())
         {
             rb.AddForce(gravity * rb.mass * myNormal);
 

@@ -8,7 +8,7 @@ public class Head : MonoBehaviour
     void Start()
     {
         //TODO temp rende denzel e lo autopossiede
-        transform.parent.GetComponent<MouseLook>()?.Possess(transform.parent.gameObject);
+        transform.parent.GetComponent<Soul>()?.EnterInCreatureBody(transform.parent.gameObject);
     }
 
     // Update is called once per frame
