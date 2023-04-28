@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class Insect : Creature
@@ -30,6 +31,7 @@ public class Insect : Creature
 
     void Update()
     {
+        
         //TODO QUI NON VA BENE - TOGLIERE
         playerCanvas.possessTxt.GetComponent<TMP_Text>().text = "";
         playerCanvas.creatureNameTxt.GetComponent<TMP_Text>().text = "";
@@ -50,23 +52,43 @@ public class Insect : Creature
                     
                     if (Input.GetButtonDown("Jump"))
                     {
+                        
                         CalulateNewNormal(hit.normal);
                     }
                 }
             }
 
-            //Con questo Raycast vediamo su quale superficie stiamo camminando 
-            //TODO - questa logica è da rivedere non entrare sempre
-            if (Physics.Raycast(transform.position, -myNormal, out hit, 1))
+            //Per il momento se sto cadendo in qualsiasi direzione dopo un tot di tempo
+            //ripristino la gravità normale
+            bool isColliding = Physics.Raycast(transform.position, -myNormal, out hit, 1f, ~LayerMask.NameToLayer("Ignore Raycast"));
+ 
+            if (!isColliding)
             {
-                //Quando entriamo nelle tubature la gravità ritorna normale
-                if(hit.transform.tag == "Pipe")
+                rb.AddForce(-rb.velocity * 1.2f);
+                frameCount++;
+                if (frameCount >= 55 && !hasBeenCalled)
                 {
-                    extraVect = head.transform.forward;
-                    StartCoroutine(CalulateNewNormalAfterTime(Vector3.up));
+                    //decelero il corpo in caduta
+                    
+                    hasBeenCalled = true;
+                    RestoreUpDirection();
                 }
+                
+                //Invoke("RestoreUpDirection", .8f);
             }
         }
+    }
+    private int frameCount = 0;
+    private bool hasBeenCalled = false;
+
+
+
+    void RestoreUpDirection()
+    {
+        hasBeenCalled = false;
+        frameCount = 0;
+
+        CalulateNewNormal(Vector3.up);
     }
 
     void FixedUpdate()
@@ -77,6 +99,7 @@ public class Insect : Creature
 
             var input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             input = transform.TransformDirection(input);
+           
             rb.MovePosition(transform.position + input * Time.deltaTime * 2);
         }
     }
@@ -109,12 +132,5 @@ public class Insect : Creature
 
         myNormal = normal; // update myNormal
         rb.isKinematic = false; // enable physics
-    }
-
-    IEnumerator CalulateNewNormalAfterTime(Vector3 newNormal)
-    {
-        yield return new WaitForSeconds(.5f);
-        CalulateNewNormal(newNormal);
-
     }
 }
