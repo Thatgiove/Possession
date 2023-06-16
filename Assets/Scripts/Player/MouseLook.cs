@@ -108,7 +108,6 @@ public class MouseLook : MonoBehaviour
             playerCanvas.creatureName.GetComponent<TMP_Text>().text = "(E) Shutdown Engine";
         }
 
-
     }
 
 

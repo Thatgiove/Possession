@@ -13,6 +13,7 @@ public class Insect : Creature
     public float distanceForClimbing = .002f;
     Vector3 extraVect = Vector3.zero;
     PlayerCanvas playerCanvas;
+    public bool canClimb;
 
     void Start()
     {
@@ -31,12 +32,9 @@ public class Insect : Creature
 
     void Update()
     {
-        
-        //TODO QUI NON VA BENE - TOGLIERE
-        playerCanvas.possessTxt.GetComponent<TMP_Text>().text = "";
-        playerCanvas.creatureNameTxt.GetComponent<TMP_Text>().text = "";
+    
         cam = GetComponentInChildren<Camera>();
-
+        
         if (cam)
         {
             var point = new Vector3(cam.pixelWidth / 2, cam.pixelHeight / 2, 0);
@@ -46,18 +44,23 @@ public class Insect : Creature
             if (Physics.Raycast(ray, out hit, distanceForClimbing))
             {
                 //il raycast non funziona se punto per terra
-                if(hit.normal != myNormal)
+                if (hit.normal != myNormal)
                 {
-                    playerCanvas.possessTxt.GetComponent<TMP_Text>().text = "[SPACE] Climb the wall";
+
+                    playerCanvas.canClimb = true;
                     
                     if (Input.GetButtonDown("Jump"))
                     {
-                        
                         CalulateNewNormal(hit.normal);
                     }
                 }
             }
+            else
+            {
+                playerCanvas.canClimb = false;
+            }
 
+     
             //Per il momento se sto cadendo in qualsiasi direzione dopo un tot di tempo
             //ripristino la gravità normale
             bool isColliding = Physics.Raycast(transform.position, -myNormal, out hit, 1f, ~LayerMask.NameToLayer("Ignore Raycast"));
@@ -69,7 +72,6 @@ public class Insect : Creature
                 if (frameCount >= 55 && !hasBeenCalled)
                 {
                     //decelero il corpo in caduta
-                    
                     hasBeenCalled = true;
                     RestoreUpDirection();
                 }
@@ -99,8 +101,8 @@ public class Insect : Creature
 
             var input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             input = transform.TransformDirection(input);
-           
-            rb.MovePosition(transform.position + input * Time.deltaTime * 2);
+
+            rb.MovePosition(transform.position + input * Time.fixedDeltaTime * 2);
         }
     }
 

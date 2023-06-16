@@ -16,6 +16,8 @@ public class PlayerCanvas : MonoBehaviour
 
     public TMP_Text items;
     public TMP_Text thoughts;
+    public bool canClimb { get; set; }
+
     void Start()
     {
         
@@ -24,7 +26,14 @@ public class PlayerCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        possessTxt.GetComponent<TMP_Text>().text = "";
+        creatureNameTxt.GetComponent<TMP_Text>().text = "";
+        creatureName.GetComponent<TMP_Text>().text = "";
+
+        if (canClimb)
+        {
+            possessTxt.GetComponent<TMP_Text>().text = "[SPACE] Climb the wall";
+        }
     }
 
     public void ToggleElements(bool hide)
