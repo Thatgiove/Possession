@@ -1,6 +1,3 @@
-using System.Collections;
-using TMPro;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class Insect : Creature
